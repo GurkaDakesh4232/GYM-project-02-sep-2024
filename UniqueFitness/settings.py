@@ -113,7 +113,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+from pathlib import Path
+from django.contrib.messages import constants as messages
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 import os
@@ -123,7 +124,15 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_TAGS={
+    messages.ERROR:'danger'
+}

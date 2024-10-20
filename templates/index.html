@@ -11,7 +11,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/body.png" rel="icon">
   <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -57,24 +57,31 @@
         <ul>
           <li><a href="#hero" class="active">Home<br></a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/gallary">Gallary</a></li>
-          <li><a href="#team">Contact</a></li>
+          <li><a href="service">Services</a></li>
+          <li><a href="gallery">Gallary</a></li>
+          <li><a href="contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span>Memberships</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               
-              <li><a href="#">Enroll</a></li>
-              <li><a href="#">Workouts</a></li>
+              <li><a href="enroll">Enroll</a></li>
+              <li><a href="attendance">Attendence</a></li>
               <li><a href="#">Tracker</a></li>
-              <li><a href="#">View Profile</a></li>
+              <li><a href="enroll">View Profile</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Sign in</a></li>
+
+          {% if not request.user.is_authenticated %}
+          <li><a href="signup">Sign in</a></li>
+          {% else %}
+          <li><a href="logout">Logout</a></li>
+          {% endif %}
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="/achievents">Awards</a>
+      {% if  request.user.is_authenticated %}
+      <a class="btn-getstarted" href="/">Welcome</a>
+      {% endif %}
+      
 
     </div>
   </header>
@@ -84,7 +91,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="static/assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+      <img src="static/assets/img/front.jpg" alt="" data-aos="fade-in">
 
       <div class="container">
 
@@ -99,31 +106,31 @@
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
               <i class="bi bi-binoculars"></i>
-              <h3><a href="">Lorem Ipsum</a></h3>
+              <h3><a href="">Biceps|Triceps</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
             <div class="icon-box">
               <i class="bi bi-bullseye"></i>
-              <h3><a href="">Dolor Sitema</a></h3>
+              <h3><a href="">Back</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
               <i class="bi bi-fullscreen-exit"></i>
-              <h3><a href="">Sedare Perspiciatis</a></h3>
+              <h3><a href="">Shoulder</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
             <div class="icon-box">
               <i class="bi bi-card-list"></i>
-              <h3><a href="">Magni Dolores</a></h3>
+              <h3><a href="">Chest</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="icon-box">
               <i class="bi bi-gem"></i>
-              <h3><a href="">Nemos Enimade</a></h3>
+              <h3><a href="">Legs</a></h3>
             </div>
           </div>
         </div>
@@ -139,22 +146,25 @@
 
         <div class="row gy-4">
           <div class="col-lg-6 order-1 order-lg-2">
-            <img src="static/assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="static/assets/img/abou.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident</h3>
+            <h3>Here are some things that make a great gym:</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              A gym is a place for exercise and physical fitness, typically with special equipment and a safe, comfortable environment. The word "gym" comes from the ancient Greek term gymnasion. 
+
             </p>
             <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Equipment: A gym should have quality equipment, including free weights, exercise machines, and mirrors. 
+              </span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Cleanliness: A gym should be clean and hygienic, and members should understand the importance of keeping it clean. 
+              </span></li>
+              <li><i class="bi bi-check2-all"></i><span>Atmosphere: A gym should be a pleasant place for recreation and socialization. 
+                Staff: A gym should have a competent and friendly staff..</span></li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+              A gym's main workout area usually has free weights, exercise machines, and mirrors. A gym that has mostly or exclusively free weights is sometimes called a black-iron gym. 
+
             </p>
           </div>
         </div>
@@ -203,14 +213,14 @@
             }
           </script>
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="static/assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/gym24.jpeg" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/back.jpg" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/chest.webp" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/shoulder.webp" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/dum.jpg" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/run.webp" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/cardio.jpeg" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/assets/img/clients/long.jpg" class="img-fluid" alt=""></div>
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -225,38 +235,38 @@
       <div class="container">
 
         <div class="row gy-4">
-          <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100"><img src="static/assets/img/features-bg.jpg" alt=""></div>
+          <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100"><img src="static/assets/img/diet.jpg" alt=""></div>
           <div class="col-lg-6">
 
             <div class="features-item d-flex ps-0 ps-lg-3 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-archive flex-shrink-0"></i>
+              <i class="bi bi-apple"></i>
               <div>
-                <h4>Est labore ad</h4>
-                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                <h4>Fruits</h4>
+                <p>Banana,Pine Apple,Apple,Straberry,Orange</p>
               </div>
             </div><!-- End Features Item-->
 
             <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-basket flex-shrink-0"></i>
               <div>
-                <h4>Harum esse qui</h4>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                <h4>Veg Items</h4>
+                <p>Paneer,Soyabeen,Millimaker,Butter,Cheese</p>
               </div>
             </div><!-- End Features Item-->
 
             <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-broadcast flex-shrink-0"></i>
+              <i class="bi bi-emoji-smile-fill"></i>
               <div>
-                <h4>Aut occaecati</h4>
-                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                <h4>Non Veg Items</h4>
+                <p>Chicken,Eggs,Mutton,Fish</p>
               </div>
             </div><!-- End Features Item-->
 
             <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="500">
-              <i class="bi bi-camera-reels flex-shrink-0"></i>
+              <i class="bi bi-cup-straw"></i>
               <div>
-                <h4>Beatae veritatis</h4>
-                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                <h4>Juices</h4>
+                <p>Beetroot,Carrot,PineApple,Guava</p>
               </div>
             </div><!-- End Features Item-->
 
@@ -283,48 +293,50 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-activity"></i>
+                <i class="bi bi-stars"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Nesciunt Mete</h3>
+                <h3>Cleanliness</h3>
               </a>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+              <p>One vital factor you want to ensure is always in top condition is cleanliness. Customers will actively avoid working out on dirty equipment..</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-broadcast"></i>
+                <i class="bi bi-sliders"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Eosle Commodi</h3>
+                <h3>Great equipment and layout</h3>
               </a>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <p>Your gym's layout, design, and equipment will play a vital role in why members choose you over competitors, so you should try to make your gym a comfortable and attractive space.
+
+                </p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-easel"></i>
+                <i class="bi bi-person-circle"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Ledo Markt</h3>
+                <h3>Personal trainers</h3>
               </a>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <p>Hiring qualified personal trainers that can help clients get in shape by guiding them through workouts to reach their fitness goals, advising them on nutrition, etc.,  is crucial..</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
+                <i class="bi bi-geo-alt-fill"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Asperiores Commodit</h3>
+                <h3>Location </h3>
               </a>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+              <p>After a hard day's work, customers don't want to spend more hours sitting in traffic, another hour working out, and then another hour driving home..</p>
               <a href="service-details.html" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -332,12 +344,12 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
+                <i class="bi bi-alarm"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Velit Doloremque</h3>
+                <h3>Working hours </h3>
               </a>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+              <p>People have different preferences for when they like to get their workouts in. Some prefer to work out in the morning, while others would rather work out at night when the gym is less crowded..</p>
               <a href="service-details.html" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -345,12 +357,21 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
+                <i class="bi bi-brightness-high"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Dolori Architecto</h3>
+                <h3>High-quality fitness equipment</h3>
               </a>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+              <p>To ensure your gym equipment is always high-quality, you should clean and maintain it regularly.
+
+                Here are some of the basic workout machines you should have:
+                
+                Treadmills
+                Cardio Machines
+                Rowing Machine
+                Elliptical Machines
+                Strength Training Machines
+                Free Weight Machines.</p>
               <a href="service-details.html" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -364,14 +385,15 @@
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
 
-      <img src="static/assets/img/cta-bg.jpg" alt="">
+      <img src="static/assets/img/action.jpg" alt="">
 
       <div class="container">
         <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-xl-10">
             <div class="text-center">
               <h3>Call To Action</h3>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>A call to action (CTA) for a gym is a button or prompt that encourages visitors to take a specific action, such as booking a session or purchasing a membership. Here are some tips for creating a CTA for a gym: 
+                Be specific</p>
               <a class="cta-btn" href="#">Call To Action</a>
             </div>
           </div>
@@ -389,14 +411,14 @@
         <div class="row gy-4 align-items-center justify-content-between">
 
           <div class="col-lg-5">
-            <img src="static/assets/img/stats-img.jpg" alt="" class="img-fluid">
+            <img src="static/assets/img/quote.webp" alt="" class="img-fluid">
           </div>
 
           <div class="col-lg-6">
 
-            <h3 class="fw-bold fs-2 mb-3">Voluptatem dignissimos provident quasi</h3>
+            <h3 class="fw-bold fs-2 mb-3">Experience</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              Since 5 Years For optimal performance, a gym must be thoughtfully and meticulously designed. The facility should be spacious, well-structured, and efficiently organized to accommodate many people and a variety of exercises simultaneously. In short, a great gym is designed and laid out with the athlete in mind
             </p>
 
             <div class="row gy-4">
@@ -405,8 +427,8 @@
                 <div class="stats-item d-flex">
                   <i class="bi bi-emoji-smile flex-shrink-0"></i>
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+                    <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>5 years</strong> <span>experience</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
@@ -415,8 +437,8 @@
                 <div class="stats-item d-flex">
                   <i class="bi bi-journal-richtext flex-shrink-0"></i>
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+                    <span data-purecounter-start="0" data-purecounter-end="3500" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Clients</strong> <span>Since now 3500 members particepated</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
@@ -425,8 +447,8 @@
                 <div class="stats-item d-flex">
                   <i class="bi bi-headset flex-shrink-0"></i>
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
+                    <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Trainers</strong> <span>12 members</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
@@ -435,8 +457,8 @@
                 <div class="stats-item d-flex">
                   <i class="bi bi-people flex-shrink-0"></i>
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+                    <span data-purecounter-start="0" data-purecounter-end="480" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Become builders</strong> <span>480 members</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
@@ -473,7 +495,7 @@
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Amberpet 6 Number</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -481,7 +503,7 @@
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
+                <p>+91 7799887363</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -489,7 +511,7 @@
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
-                <p>info@example.com</p>
+                <p>UniqueeFitness@example.com</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -542,13 +564,13 @@
         <div class="row gy-4">
           <div class="col-lg-4 col-md-6 footer-about">
             <a href="index.html" class="logo d-flex align-items-center">
-              <span class="sitename">GP</span>
+              <img src="static/assets/img/body.png" alt="" style="border-radius: 50%; width: 70px; height: 90px;">
             </a>
             <div class="footer-contact pt-3">
-              <p>A108 Adam Street</p>
-              <p>New York, NY 535022</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
+              <p>Vardaman Kitchen world street</p>
+              <p>Hyderabad</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+91 7799887363</span></p>
+              <p><strong>Email:</strong> <span>UniqueeFitness@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
               <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -561,30 +583,30 @@
           <div class="col-lg-2 col-md-3 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/"> Home</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#"> About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Privacy policy</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="gallery"> Gallary</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="contact"> Contact</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Sevices</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Our Services</h4>
+            <h4>Our GYM</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Graphic Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Biceps|Triceps</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Shoulder|Chest</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Back</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> ABS</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#"> Legs</a></li>
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-12 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+            <h4>Send Mail</h4>
+            <p>If you have any Quiers please feel free to ask here!</p>
             <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Submit"></div>
               <div class="loading">Loading</div>
               <div class="error-message"></div>
               <div class="sent-message">Your subscription request has been sent. Thank you!</div>
