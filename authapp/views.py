@@ -14,6 +14,10 @@ def service(request):
     return render(request,"service.html")
 
 
+def about(request):
+    return render(request,"about.html")
+
+
 def signup(request):
     if request.method=="POST":
         username=request.POST.get('usernumber')
